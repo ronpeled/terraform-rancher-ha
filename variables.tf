@@ -17,9 +17,9 @@ variable "region" {
 variable "ami" {
     description = "AWS RancherOS AMI ID"
     default {
-        us-east-1 = "ami-880f12e2"
-        us-west-1 = "ami-ea7a058a"
-        us-west-2 = "ami-4f50a72f"
+        us-east-1 = "ami-a8d2a4bf"
+        us-west-1 = "ami-fccb879c"
+        us-west-2 = "ami-1ed3007e"
     }
 }
 
@@ -51,7 +51,3 @@ variable "vpc_cidr" {
 variable "db_password" {
     description = "Password for connecting to the rancher RDS database"
 }
-
-variable "cert_body" {}
-variable "cert_private_key" {}
-variable "cert_chain" {}

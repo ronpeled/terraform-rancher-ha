@@ -60,9 +60,9 @@ resource "aws_elb" "rancher_ha" {
 
 resource "aws_iam_server_certificate" "rancher_ha" {
     name              = "${var.tag_name}-certificate"
-    certificate_body  = "${file("${var.cert_body}")}"
-    private_key       = "${file("${var.cert_private_key}")}"
-    certificate_chain = "${file("${var.cert_chain}")}"
+    certificate_body  = "${acme_certificate.certificate.certificate_pem}"
+    private_key       = "${acme_certificate.certificate.private_key_pem}"
+    certificate_chain = "${acme_certificate.certificate.issuer_pem}"
 }
 
 resource "aws_security_group" "rancher_ha_elb" {

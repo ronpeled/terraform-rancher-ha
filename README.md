@@ -1,4 +1,4 @@
-# terraform-rancher-ha-example
+# terraform-rancher-ha
 Terraform files for deploying a Rancher HA cluster in AWS
 
 These files are meant as a companion to the following blog post:
@@ -7,13 +7,6 @@ These files are meant as a companion to the following blog post:
 
 ## Usage
 
-Clone this repo:
-
-```
-git clone https://github.com/nextrevision/terraform-rancher-ha-example
-cd terraform-rancher-ha-example
-```
-
 Create a `terraform.tfvars` file with the following contents:
 
 ```
@@ -21,14 +14,6 @@ Create a `terraform.tfvars` file with the following contents:
 # could also be exported as ENV vars, but included here for simplicity
 access_key = ""
 secret_key = ""
-
-# certificate paths
-# after receiving certificates from Let's Encrypt, I placed
-# them in ./certs. modify these values with the paths to your
-# certificates.
-cert_body = "./certs/cert1.pem"
-cert_private_key = "./certs/privkey1.pem"
-cert_chain = "./certs/chain1.pem"
 
 # database password rancher uses to connect to RDS
 db_password = "rancherdbpass"

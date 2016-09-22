@@ -2,6 +2,7 @@
 *.tfstate
 *.tfstate.backup
 
-certs
 *.swp
 *.tar.gz
+
+ssh
