@@ -69,3 +69,13 @@ done
 ```
 ssh -i ./ssh/rancher rancher@52.91.243.49 docker logs -f rancher-ha
 ```
+
+* Turn on Auth via curl
+
+http://docs.rancher.com/rancher/v1.2/en/api/access-control/
+
+* Change host registration URL
+
+http://192.168.99.100:8080/v1/activesettings/1as!api.host
+
+`{"id":"1as1","type":"activeSetting","links":{"self":"http://192.168.99.100:8080/v1/activesettings/1as1"},"actions":{},"name":"api.host","activeValue":null,"inDb":true,"source":null,"value":"http://192.168.99.100:8080"}`

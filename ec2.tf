@@ -23,6 +23,8 @@ resource "aws_instance" "rancher_ha_a" {
         volume_size = "100"
         delete_on_termination = true
     }
+
+    user_data = ${file("cloud-config.yml")}
 }
 
 resource "aws_instance" "rancher_ha_b" {

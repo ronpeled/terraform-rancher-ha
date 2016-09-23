@@ -28,3 +28,7 @@ resource "acme_certificate" "certificate" {
 
   registration_url = "${acme_registration.reg.id}"
 }
+
+output "acme_certificate" "pem" {
+  value = "${acme_certificate.certificate.private_key_pem}"
+}
