@@ -1,0 +1,10 @@
+# aws access and secret keys
+access_key = ""
+secret_key = ""
+
+# ssh key
+key_name = "rancher"
+key_path = "./ssh/rancher"
+
+# database password rancher uses to connect to RDS
+db_password = ""
