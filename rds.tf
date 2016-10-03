@@ -12,8 +12,8 @@ resource "aws_rds_cluster_instance" "rancher_ha" {
 
 resource "aws_rds_cluster" "rancher_ha" {
     cluster_identifier     = "${var.tag_name}-db"
-    database_name          = "rancher"
-    master_username        = "rancher"
+    database_name          = "${var.db_name}"
+    master_username        = "${var.db_username}"
     master_password        = "${var.db_password}"
     db_subnet_group_name   = "${aws_db_subnet_group.rancher_ha.name}"
     availability_zones     = ["${var.region}a", "${var.region}b", "${var.region}d"]
@@ -53,8 +53,8 @@ resource "aws_security_group" "rancher_ha_rds" {
     }
 
     ingress {
-        from_port   = 3306
-        to_port     = 3306
+        from_port   = "${var.db_port}"
+        to_port     = "${var.db_port}"
         protocol    = "tcp"
         cidr_blocks = ["192.168.99.0/24"]
     }

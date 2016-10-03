@@ -1,6 +1,30 @@
 #------------------------------------------#
 # EC2 Instance Configuration
 #------------------------------------------#
+# User-data template
+resource "template_file" "user_data" {
+    template = "${file("${path.module}/files/userdata.template")}"
+
+    vars {
+        # Database
+        database_address  = "${aws_rds_cluster_instance.rancher_ha.endpoint}"
+        database_port     = "${var.db_port}"
+        database_name     = "${var.db_name}"
+        database_username = "${var.db_username}"
+        database_password = "${var.db_password}"
+        database_encrypted_password = "${var.database_encrypted_password}"
+        ha_registration_url = "${var.ha_registration_url}"
+        scale_desired_size = "${var.scale_desired_size}"
+        rancher_version = "${var.rancher_version}"
+        # Rancher HA encryption key
+        encryption_key    = "${var.ha_encryption_key}"
+    }
+
+    lifecycle {
+        create_before_destroy = true
+    }
+}
+
 resource "aws_key_pair" "rancher" {
     key_name = "${var.key_name}"
     public_key = "${file("${var.key_path}.pub")}"
@@ -14,6 +38,7 @@ resource "aws_instance" "rancher_ha_a" {
     subnet_id                   = "${aws_subnet.rancher_ha_a.id}"
     security_groups             = ["${aws_security_group.rancher_ha.id}"]
     associate_public_ip_address = true
+    user_data                   = "${template_file.user_data.rendered}"
 
     tags {
         Name = "${var.tag_name}-instance-a"
@@ -23,8 +48,6 @@ resource "aws_instance" "rancher_ha_a" {
         volume_size = "100"
         delete_on_termination = true
     }
-
-    user_data = ${file("cloud-config.yml")}
 }
 
 resource "aws_instance" "rancher_ha_b" {
@@ -35,6 +58,7 @@ resource "aws_instance" "rancher_ha_b" {
     subnet_id                   = "${aws_subnet.rancher_ha_b.id}"
     security_groups             = ["${aws_security_group.rancher_ha.id}"]
     associate_public_ip_address = true
+    user_data                   = "${template_file.user_data.rendered}"
 
     tags {
         Name = "${var.tag_name}-instance-b"
@@ -55,6 +79,7 @@ resource "aws_instance" "rancher_ha_d" {
     subnet_id                   = "${aws_subnet.rancher_ha_d.id}"
     security_groups             = ["${aws_security_group.rancher_ha.id}"]
     associate_public_ip_address = true
+    user_data                   = "${template_file.user_data.rendered}"
 
     tags {
         Name = "${var.tag_name}-instance-d"
