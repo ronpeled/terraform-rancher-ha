@@ -13,5 +13,5 @@ db_password = ""
 db_encrypted_password = ""
 
 # rancher stuff
-ha_registration_url = ""
+rancher_endpoint_name = ""
 ha_encryption_key = ""

@@ -86,10 +86,6 @@ variable "rancher_version" {
   description = "Docker tag of the Rancher release to use"
 }
 
-variable "ha_registration_url" {
-  description = "HTTP endpoint for Rancher registration"
-}
-
 variable "ha_encryption_key" {
   description = "The encryption key to use in Rancher"
 }
@@ -97,4 +93,8 @@ variable "ha_encryption_key" {
 variable "scale_desired_size" {
   default = "3"
   description = "Number of instances to spin up"
+}
+
+variable "rancher_endpoint_name" {
+  description = "The DNS name you want to access to get to your RancherOS cluster, i.e. https://`rancher_endpoint_name`/"
 }

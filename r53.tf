@@ -1,6 +1,6 @@
 resource "aws_route53_record" "rancher" {
   zone_id = "${var.r53_zone_id}"
-  name = "pointsaws.com"
+  name = "${var.rancher_endpoint_name}"
   type = "A"
 
   alias {

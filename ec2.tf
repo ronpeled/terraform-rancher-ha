@@ -13,7 +13,7 @@ data "template_file" "user_data" {
         db_username           = "${var.db_username}"
         db_password           = "${var.db_password}"
         db_encrypted_password = "${var.db_encrypted_password}"
-        ha_registration_url   = "${var.ha_registration_url}"
+        ha_registration_url   = "https://${var.rancher_endpoint_name}"
         scale_desired_size    = "${var.scale_desired_size}"
         rancher_version       = "${var.rancher_version}"
         encryption_key        = "${var.ha_encryption_key}"
