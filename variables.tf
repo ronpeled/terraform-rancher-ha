@@ -70,6 +70,10 @@ variable "db_password" {
   description = "Password for connecting to the rancher RDS database"
 }
 
+variable "db_encrypted_password" {
+  description = "Password for the database encrypted using the `ha_encryption_key`"
+}
+
 #------------------------------------------#
 # Rancher Environment Values
 #------------------------------------------#
@@ -80,6 +84,10 @@ variable "rancher_version" {
 
 variable "ha_registration_url" {
   description = "HTTP endpoint for Rancher registration"
+}
+
+variable "ha_encryption_key" {
+  description = "The encryption key to use in Rancher"
 }
 
 variable "scale_desired_size" {
