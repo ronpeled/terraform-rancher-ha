@@ -48,6 +48,10 @@ variable "vpc_cidr" {
   description = "Subnet in CIDR format to assign to VPC"
 }
 
+variable "r53_zone_id" {
+  description = "Zone ID for the Route 53 domain"
+}
+
 #------------------------------------------#
 # RDS Environment Values
 #------------------------------------------#

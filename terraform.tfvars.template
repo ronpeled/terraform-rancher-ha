@@ -3,8 +3,15 @@ access_key = ""
 secret_key = ""
 
 # ssh key
-key_name = "rancher"
-key_path = "./ssh/rancher"
+key_name = ""
+key_path = ""
+
+r53_zone_id = ""
 
 # database password rancher uses to connect to RDS
 db_password = ""
+db_encrypted_password = ""
+
+# rancher stuff
+ha_registration_url = ""
+ha_encryption_key = ""

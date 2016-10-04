@@ -7,17 +7,16 @@ data "template_file" "user_data" {
 
     vars {
         # Database
-        database_address  = "${aws_rds_cluster.rancher_ha.endpoint}"
-        database_port     = "${var.db_port}"
-        database_name     = "${var.db_name}"
-        database_username = "${var.db_username}"
-        database_password = "${var.db_password}"
-        database_encrypted_password = "${var.db_encrypted_password}"
-        ha_registration_url = "${var.ha_registration_url}"
-        scale_desired_size = "${var.scale_desired_size}"
-        rancher_version = "${var.rancher_version}"
-        # Rancher HA encryption key
-        encryption_key    = "${var.ha_encryption_key}"
+        db_address            = "${aws_rds_cluster.rancher_ha.endpoint}"
+        db_port               = "${var.db_port}"
+        db_name               = "${var.db_name}"
+        db_username           = "${var.db_username}"
+        db_password           = "${var.db_password}"
+        db_encrypted_password = "${var.db_encrypted_password}"
+        ha_registration_url   = "${var.ha_registration_url}"
+        scale_desired_size    = "${var.scale_desired_size}"
+        rancher_version       = "${var.rancher_version}"
+        encryption_key        = "${var.ha_encryption_key}"
     }
 }
 

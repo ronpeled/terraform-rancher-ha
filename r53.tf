@@ -1,9 +1,5 @@
-resource "aws_route53_zone" "primary" {
-   name = "pointsaws.com"
-}
-
 resource "aws_route53_record" "rancher" {
-  zone_id = "${aws_route53_zone.primary.id}"
+  zone_id = "${var.r53_zone_id}"
   name = "pointsaws.com"
   type = "A"
 
