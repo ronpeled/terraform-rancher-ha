@@ -34,7 +34,7 @@ variable "key_path" {
 }
 
 variable "instance_type" {
-  default   = "t2.large" # RAM Requirements >= 8gb
+  default   = "t2.medium" # RAM Requirements >= 4gb
   description = "AWS Instance type"
 }
 
